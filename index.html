@@ -200,7 +200,11 @@
 
         <!-- Lista dinâmica onde os depoimentos vão aparecer -->
         <div id="listaDepoimentos" class="grid sm:grid-cols-2 gap-6 lg:col-span-2">
-          <!-- Os depoimentos inseridos aparecem aqui automaticamente -->
+          <!-- Mensagem caso esteja vazio -->
+          <div id="semDepoimentos" class="col-span-full text-center py-12 text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+            <i class="fa-regular fa-comment-dots text-3xl mb-2 block text-slate-600"></i>
+            Ainda não há depoimentos publicados. Seja o primeiro a deixar o seu feedback!
+          </div>
         </div>
 
       </div>
@@ -345,28 +349,25 @@
                 observer.observe(element);
             });
 
-            // Gestão do Mural de Depoimentos (Local Storage)
+            // Gestão do Mural de Depoimentos (Local Storage limpo por padrão)
             const form = document.getElementById('depoimentoForm');
             const lista = document.getElementById('listaDepoimentos');
 
-            // Depoimentos iniciais padrão caso esteja vazio
-            let depoimentos = JSON.parse(localStorage.getItem('fm_depoimentos')) || [
-                {
-                    nome: "Rodrigo Costa",
-                    empresa: "Barbearia & Estilo",
-                    texto: "O site mudou completamente a forma como os clientes marcam os cortes. Super profissional e rápido!"
-                },
-                {
-                    nome: "Marcos Silva",
-                    empresa: "Oficina Mecânica",
-                    texto: "Excelente parceria! Tenho suporte rápido sempre que preciso alterar os serviços."
-                }
-            ];
+            let depoimentos = JSON.parse(localStorage.getItem('fm_depoimentos')) || [];
 
             function renderizarDepoimentos() {
+                if (depoimentos.length === 0) {
+                    lista.innerHTML = `
+                        <div id="semDepoimentos" class="col-span-full text-center py-12 text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+                            <i class="fa-regular fa-comment-dots text-3xl mb-2 block text-slate-600"></i>
+                            Ainda não há depoimentos publicados. Seja o primeiro a deixar o seu feedback!
+                        </div>
+                    `;
+                    return;
+                }
+
                 lista.innerHTML = '';
                 depoimentos.forEach(dep => {
-                    // Pegar as iniciais do nome para o avatar
                     const iniciais = dep.nome.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
 
                     const card = document.createElement('div');
@@ -408,7 +409,7 @@
                     texto: document.getElementById('textoCliente').value
                 };
 
-                depoimentos.unshift(novoDepoimento); // Adicionar no início da lista
+                depoimentos.unshift(novoDepoimento);
                 localStorage.setItem('fm_depoimentos', JSON.stringify(depoimentos));
                 
                 renderizarDepoimentos();
