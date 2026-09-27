@@ -162,66 +162,45 @@
       </div>
     </section>
 
-    <!-- SEÇÃO DE PROVA SOCIAL / DEPOIMENTOS -->
+    <!-- SECÇÃO DE MURAL DE DEPOIMENTOS (Escrito pelos clientes) -->
     <section class="reveal py-20 px-4 max-w-6xl mx-auto border-t border-slate-800">
       <div class="text-center mb-16">
         <span class="bg-emerald-500/10 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-500/20">
-          Resultados Reais
+          Mural de Avaliações
         </span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4">O que dizem os nossos parceiros</h2>
-        <p class="text-slate-400 mt-2">Comerciantes locais que transformaram a sua presença digital com a FM WebDev</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4">O que os nossos parceiros dizem</h2>
+        <p class="text-slate-400 mt-2">Deixe o seu comentário ou veja o feedback de quem já contratou</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="grid lg:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
         
-        <!-- Depoimento 1 -->
-        <div class="bg-slate-800/80 border border-slate-700 p-8 rounded-2xl shadow-lg relative flex flex-col justify-between hover:border-slate-600 transition">
-          <div>
-            <div class="flex text-amber-400 gap-1 mb-4 text-sm">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="text-slate-300 text-sm leading-relaxed italic mb-6">
-              "O site mudou completamente a forma como os clientes marcam os cortes na barbearia. Ficou super profissional, carrega instantaneamente no telemóvel e o botão do WhatsApp facilitou demais os agendamentos diários. Recomendo muito o trabalho da FM WebDev!"
-            </p>
-          </div>
-          <div class="flex items-center gap-4 border-t border-slate-700/60 pt-4">
-            <div class="w-10 h-10 bg-blue-600/20 text-blue-400 font-bold rounded-full flex items-center justify-center border border-blue-500/30">
-              RC
+        <!-- Formulário para o cliente escrever -->
+        <div class="bg-slate-800/90 border border-slate-700 p-6 rounded-2xl shadow-xl lg:col-span-1">
+          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-pen-nib text-blue-400"></i> Deixe o seu depoimento
+          </h3>
+          <form id="depoimentoForm" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">O seu Nome</label>
+              <input type="text" id="nomeCliente" required placeholder="Ex: Carlos Mendes" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500">
             </div>
             <div>
-              <h4 class="text-white font-semibold text-sm">Rodrigo Costa</h4>
-              <p class="text-slate-400 text-xs">Proprietário | Barbearia & Estilo</p>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Empresa / Negócio</label>
+              <input type="text" id="empresaCliente" required placeholder="Ex: Hamburgueria do Carlos" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500">
             </div>
-          </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">O seu Comentário</label>
+              <textarea id="textoCliente" required rows="3" placeholder="Escreva como o site ajudou o seu negócio..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500 resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition shadow-lg">
+              Publicar Depoimento
+            </button>
+          </form>
         </div>
 
-        <!-- Depoimento 2 -->
-        <div class="bg-slate-800/80 border border-slate-700 p-8 rounded-2xl shadow-lg relative flex flex-col justify-between hover:border-slate-600 transition">
-          <div>
-            <div class="flex text-amber-400 gap-1 mb-4 text-sm">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="text-slate-300 text-sm leading-relaxed italic mb-6">
-              "No modelo de parceria total, tenho a tranquilidade de ter o site sempre no ar e posso pedir atualizações de preços e serviços a qualquer altura sem complicações. É um investimento que traz retorno logo nos primeiros dias de funcionamento."
-            </p>
-          </div>
-          <div class="flex items-center gap-4 border-t border-slate-700/60 pt-4">
-            <div class="w-10 h-10 bg-emerald-600/20 text-emerald-400 font-bold rounded-full flex items-center justify-center border border-emerald-500/30">
-              MS
-            </div>
-            <div>
-              <h4 class="text-white font-semibold text-sm">Marcos Silva</h4>
-              <p class="text-slate-400 text-xs">Gerente | Oficina Mecânica Especializada</p>
-            </div>
-          </div>
+        <!-- Lista dinâmica onde os depoimentos vão aparecer -->
+        <div id="listaDepoimentos" class="grid sm:grid-cols-2 gap-6 lg:col-span-2">
+          <!-- Os depoimentos inseridos aparecem aqui automaticamente -->
         </div>
 
       </div>
@@ -344,9 +323,10 @@
         </span>
     </a>
 
-    <!-- Script para ativar a animação de Fade-in no Scroll -->
+    <!-- Script para animação e Mural de Depoimentos Interativo -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Animação Reveal no Scroll
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -363,6 +343,76 @@
 
             document.querySelectorAll('.reveal').forEach(element => {
                 observer.observe(element);
+            });
+
+            // Gestão do Mural de Depoimentos (Local Storage)
+            const form = document.getElementById('depoimentoForm');
+            const lista = document.getElementById('listaDepoimentos');
+
+            // Depoimentos iniciais padrão caso esteja vazio
+            let depoimentos = JSON.parse(localStorage.getItem('fm_depoimentos')) || [
+                {
+                    nome: "Rodrigo Costa",
+                    empresa: "Barbearia & Estilo",
+                    texto: "O site mudou completamente a forma como os clientes marcam os cortes. Super profissional e rápido!"
+                },
+                {
+                    nome: "Marcos Silva",
+                    empresa: "Oficina Mecânica",
+                    texto: "Excelente parceria! Tenho suporte rápido sempre que preciso alterar os serviços."
+                }
+            ];
+
+            function renderizarDepoimentos() {
+                lista.innerHTML = '';
+                depoimentos.forEach(dep => {
+                    // Pegar as iniciais do nome para o avatar
+                    const iniciais = dep.nome.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+                    const card = document.createElement('div');
+                    card.className = "bg-slate-800/80 border border-slate-700 p-6 rounded-2xl shadow-lg flex flex-col justify-between hover:border-slate-600 transition";
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex text-amber-400 gap-1 mb-3 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed italic mb-4">
+                                "${dep.texto}"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 border-t border-slate-700/60 pt-3">
+                            <div class="w-9 h-9 bg-blue-600/20 text-blue-400 font-bold rounded-full flex items-center justify-center border border-blue-500/35 text-xs">
+                                ${iniciais}
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">${dep.nome}</h4>
+                                <p class="text-slate-400 text-xs">${dep.empresa}</p>
+                            </div>
+                        </div>
+                    `;
+                    lista.appendChild(card);
+                });
+            }
+
+            renderizarDepoimentos();
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const novoDepoimento = {
+                    nome: document.getElementById('nomeCliente').value,
+                    empresa: document.getElementById('empresaCliente').value,
+                    texto: document.getElementById('textoCliente').value
+                };
+
+                depoimentos.unshift(novoDepoimento); // Adicionar no início da lista
+                localStorage.setItem('fm_depoimentos', JSON.stringify(depoimentos));
+                
+                renderizarDepoimentos();
+                form.reset();
             });
         });
     </script>
