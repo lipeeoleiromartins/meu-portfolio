@@ -16,7 +16,7 @@
       --text-muted: #9ca3af;
       --accent-green: #00ff80;
       --accent-green-hover: #00cc66;
-      --accent-blue: #3b82f6; /* Azul original para o logo FM */
+      --accent-blue: #2563eb; /* Azul mais elegante e integrado */
       --border-color: #1f2937;
     }
 
@@ -34,16 +34,9 @@
       line-height: 1.6;
     }
 
-    /* Animações Globais de Entrada */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .animate-fade {
@@ -77,10 +70,11 @@
     }
 
     .logo span {
-      background: var(--accent-blue); /* Retornado para azul */
+      background: var(--accent-blue);
       color: #fff;
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
     }
 
     nav ul {
@@ -101,17 +95,10 @@
       color: var(--accent-green);
     }
 
-    /* Botão WhatsApp com Pulsação */
     @keyframes pulse-whatsapp {
-      0% {
-        box-shadow: 0 0 0 0 rgba(0, 255, 128, 0.4);
-      }
-      70% {
-        box-shadow: 0 0 0 12px rgba(0, 255, 128, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(0, 255, 128, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 128, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(0, 255, 128, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 128, 0); }
     }
 
     .btn-whatsapp {
@@ -133,7 +120,6 @@
       transform: scale(1.05);
     }
 
-    /* Secções gerais */
     section {
       padding: 120px 5% 80px 5%;
       max-width: 1200px;
@@ -183,7 +169,6 @@
       color: var(--text-muted);
     }
 
-    /* Vantagens / Cards com Hover */
     .grid-vantagens {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -220,7 +205,6 @@
       font-size: 0.95rem;
     }
 
-    /* Modelos Demonstrativos */
     .grid-modelos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -241,15 +225,8 @@
       border-color: var(--accent-green);
     }
 
-    .modelo-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background-color: #1f2937;
-    }
-
     .modelo-content {
-      padding: 25px;
+      padding: 30px;
     }
 
     .modelo-content h3 {
@@ -285,11 +262,12 @@
       color: var(--accent-green);
     }
 
-    /* Planos */
+    /* Planos com alinhamento perfeito */
     .grid-planos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
+      align-items: stretch;
     }
 
     .plano-card {
@@ -298,6 +276,9 @@
       border-radius: 16px;
       padding: 40px 30px;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
@@ -325,6 +306,30 @@
       text-transform: uppercase;
     }
 
+    .plano-content-top {
+      flex-grow: 1;
+    }
+
+    .plano-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 25px 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .plano-card ul li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plano-card ul li i {
+      color: var(--accent-green);
+    }
+
     /* FAQ */
     .faq-list {
       max-width: 800px;
@@ -337,8 +342,8 @@
     .faq-item {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 20px 25px;
-      border-radius: 8px;
+      padding: 22px 25px;
+      border-radius: 10px;
       transition: border-color 0.3s;
     }
 
@@ -457,28 +462,41 @@
       <p>Escolha a melhor opção para impulsionar o seu negócio no digital</p>
     </div>
     <div class="grid-planos">
+      <!-- Plano Essencial -->
       <div class="plano-card">
-        <h3>Pacote Essencial</h3>
-        <p style="color: var(--text-muted); margin: 10px 0 20px 0; font-size: 0.9rem;">Ideal para quem quer o site pronto com alta performance, otimizado para celulares e pronto para atrair clientes.</p>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; color: var(--text-muted); font-size: 0.95rem;">
-          <li><i class="fas fa-check" style="color: var(--accent-green); margin-right: 8px;"></i> Site 100% Responsivo</li>
-          <li><i class="fas fa-check" style="color: var(--accent-green); margin-right: 8px;"></i> Botão Direto para o WhatsApp</li>
-          <li><i class="fas fa-check" style="color: var(--accent-green); margin-right: 8px;"></i> Otimização básica para o Google</li>
-        </ul>
-        <a href="https://wa.me/5511933013125" class="btn-whatsapp" style="justify-content: center; width: 100%;">Contratar Essencial</a>
+        <div class="plano-content-top">
+          <h3>Pacote Essencial</h3>
+          <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">Ideal para quem quer o site pronto com alta performance, otimizado para celulares e pronto para atrair clientes.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Site 100% Responsivo (Celular e PC)</li>
+            <li><i class="fas fa-check"></i> Botão Direto para o WhatsApp</li>
+            <li><i class="fas fa-check"></i> Otimização básica para o Google</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: var(--text-main);">Sob Consulta</div>
+          <a href="https://wa.me/5511933013125?text=Olá,%20tenho%20interesse%20no%20Pacote%20Essencial." class="btn-whatsapp" style="justify-content: center; width: 100%;">Contratar Essencial</a>
+        </div>
       </div>
 
+      <!-- Plano Parceria Total -->
       <div class="plano-card destaque">
         <span class="badge-recomendado">Recomendado</span>
-        <h3>Parceria Total</h3>
-        <p style="color: var(--text-muted); margin: 10px 0 20px 0; font-size: 0.9rem;">Para empresas que precisam de atualizações frequentes, novos produtos, alteração de preços e suporte dedicado.</p>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; color: var(--text-muted); font-size: 0.95rem;">
-          <li><i class="fas fa-check" style="color: var(--accent-green); margin-right: 8px;"></i> Criação do site inclusa</li>
-          <li><i class="fas fa-check" style="color: var(--accent-green); margin-right: 8px;"></i> Atualizações ilimitadas de textos e fotos</li>
-          <li><i class="fas fa-check" style="color: var(--accent-green); margin-right: 8px;"></i> Suporte prioritário via WhatsApp</li>
-        </ul>
-        <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--accent-green);">R$ 100 <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">/ mês</span></div>
-        <a href="https://wa.me/5511933013125" class="btn-whatsapp" style="justify-content: center; width: 100%;">Quero Parceria Total</a>
+        <div class="plano-content-top">
+          <h3>Parceria Total</h3>
+          <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">Para empresas que precisam de atualizações frequentes, novos produtos, alteração de preços e suporte dedicado.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Criação do site inclusa (Fidelidade mínima de 6 meses)</li>
+            <li><i class="fas fa-check"></i> Atualizações e trocas ilimitadas de textos e fotos</li>
+            <li><i class="fas fa-check"></i> Cadastro de novos produtos / serviços</li>
+            <li><i class="fas fa-check"></i> Suporte prioritário via WhatsApp</li>
+            <li><i class="fas fa-check"></i> <strong>Gestão & Hospedagem:</strong> Em caso de distrato ou rescisão antes do prazo, a publicação original é encerrada até a regularização.</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--accent-green);">R$ 100 <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">/ mês</span></div>
+          <a href="https://wa.me/5511933013125?text=Olá,%20tenho%20interesse%20no%20modelo%20Parceria%20Total." class="btn-whatsapp" style="justify-content: center; width: 100%;">Quero Parceria Total</a>
+        </div>
       </div>
     </div>
   </section>
@@ -487,23 +505,31 @@
   <section id="faq">
     <div class="section-title">
       <h2>Perguntas Frequentes</h2>
-      <p>Tudo o que precisas de saber sobre os nossos serviços</p>
+      <p>Tudo o que precisas de saber sobre o modelo de Parceria Total da FM WebDev.</p>
     </div>
     <div class="faq-list">
       <div class="faq-item">
+        <h4>Como funciona o plano mensal (Parceria Total)?</h4>
+        <p>O modelo funciona com uma taxa inicial de desenvolvimento de R$ 100 para a criação, design e configuração completa do site. Depois, aplica-se a mensalidade de R$ 100, que inclui hospedagem de alta performance, certificado de segurança (SSL) e atualizações mensais ilimitadas.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Existe fidelidade ou taxa de cancelamento?</h4>
+        <p>Sim. Para garantir o investimento no desenvolvimento estrutural inicial, o plano tem uma fidelidade mínima de 6 meses. O cancelamento antecipado deste prazo está sujeito a uma taxa de rescisão proporcional a 50% das mensalidades restantes.</p>
+      </div>
+      <div class="faq-item">
         <h4>Quanto tempo demoram a entregar o site pronto?</h4>
-        <p>Após recebermos as informações principais, o site fica pronto e publicado no ar em até 7 dias úteis.</p>
+        <p>Após recebermos as informações principais do seu negócio (fotos, logótipo, textos e serviços), o site fica pronto e publicado no ar em até 7 dias úteis.</p>
       </div>
       <div class="faq-item">
         <h4>Consigo alterar informações do site depois de pronto?</h4>
-        <p>Sim! Na Parceria Total pões solicitar alterações de preços, contactos ou novos serviços sempre que quiseres.</p>
+        <p>Sim! Como parte da nossa parceria, podes solicitar alterações de preços, contactos, morada ou novos serviços sempre que quiseres, e nós atualizamos para ti.</p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 FM WebDev. Todos os direitos reservados.</p>
+    <p>© 2026 FM WebDev. Todos os direitos reservados. Desenvolvido com foco em conversão e performance para negócios.</p>
   </footer>
 
 </body>
