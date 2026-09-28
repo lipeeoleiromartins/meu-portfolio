@@ -66,17 +66,16 @@
         </h1>
         
         <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-normal">
-            Transforme visitantes do Google e Instagram en clientes reais com um site rápido, moderno e 100% otimizado para celulares.
+            Transforme visitantes do Google e Instagram em clientes reais com um site rápido, moderno e 100% otimizado para celulares.
         </p>
 
-        <!-- Badge de Prova Social com Contador Dinâmico -->
+        <!-- Selo de Confiança Real -->
         <div class="mt-6 inline-flex items-center gap-3 bg-slate-900/90 border border-slate-800 px-4 py-2 rounded-full shadow-lg backdrop-blur-sm">
             <span class="flex h-3 w-3 relative">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
             </span>
             <p class="text-xs sm:text-sm text-slate-300 font-medium">
-                ⚡ <strong class="text-white"><span id="visitor-count">0</span> donos de negócios</strong> conversaram no WhatsApp esta semana
+                🚀 <strong class="text-white">Design Exclusivo</strong> e Focado na Conversão do seu Comércio
             </p>
         </div>
 
@@ -337,20 +336,6 @@
             <p class="text-xs">Desenvolvido com foco em conversão e performance para negócios locais.</p>
         </div>
     </footer>
-
-    <!-- Script do Contador de Visitantes -->
-    <script>
-        let count = localStorage.getItem('visitor_count');
-        
-        if (!count) {
-            count = 0;
-        } else {
-            count = parseInt(count) + 1;
-        }
-        
-        localStorage.setItem('visitor_count', count);
-        document.getElementById('visitor-count').innerText = count;
-    </script>
 
 </body>
 </html>
