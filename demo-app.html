@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração Interativa | App de Agendamento - FM WebDev</title>
+    <meta name="description" content="Teste na prática o funcionamento de um aplicativo de agendamento mobile desenvolvido pela FM WebDev.">
+    
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Header Simples da Demo -->
+    <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='aplicativos.html'">
+                <i class="fa-solid fa-arrow-left text-slate-400 hover:text-white transition"></i>
+                <span class="text-sm font-semibold text-slate-300">Voltar para Planos</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Modo Demonstração</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal / Simulador de App -->
+    <main class="max-w-md w-full mx-auto px-4 py-8 flex-grow">
+        
+        <!-- Cabeçalho do Estabelecimento Fictício -->
+        <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-blue-600/20 border-2 border-blue-500 rounded-2xl mx-auto flex items-center justify-center text-blue-400 text-3xl shadow-lg mb-4">
+                <i class="fa-solid fa-scissors"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-white">Barbearia & Estúdio Demo</h1>
+            <p class="text-slate-400 text-xs mt-1">Experimente agendar um horário como o seu cliente faria.</p>
+        </div>
+
+        <!-- Passo a Passo do Agendamento (Simulador) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            
+            <form id="form-demo" onsubmit="concluirAgendamento(event)" class="space-y-5">
+                
+                <!-- Escolha do Serviço -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">1. Escolha o Serviço</label>
+                    <select id="servico" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition">
+                        <option value="" disabled selected>Selecione um serviço...</option>
+                        <option value="Corte Cabelo - R$ 40">Corte de Cabelo (30 min) - R$ 40</option>
+                        <option value="Barba Completa - R$ 30">Barba Completa (30 min) - R$ 30</option>
+                        <option value="Corte + Barba - R$ 60">Corte + Barba (45 min) - R$ 60</option>
+                    </select>
+                </div>
+
+                <!-- Escolha do Profissional -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">2. Escolha o Profissional</label>
+                    <select id="profissional" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition">
+                        <option value="" disabled selected>Selecione o profissional...</option>
+                        <option value="Carlos Silva">Carlos Silva</option>
+                        <option value="Marcos Vinicius">Marcos Vinicius</option>
+                    </select>
+                </div>
+
+                <!-- Data e Hora -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">3. Data</label>
+                        <input type="date" id="data" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-3 text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">4. Horário</label>
+                        <select id="horario" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-3 text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition">
+                            <option value="" disabled selected>Horário</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Nome do Cliente de Teste -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">O seu nome</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome para o teste" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition">
+                </div>
+
+                <!-- Botão de Ação -->
+                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-center transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 mt-4">
+                    <i class="fa-solid fa-check-circle"></i> Confirmar Agendamento Teste
+                </button>
+            </form>
+
+            <!-- Ecrã de Sucesso (Oculto inicialmente) -->
+            <div id="sucesso-msg" class="hidden text-center py-8 space-y-4">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-full flex items-center justify-center text-3xl mx-auto">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">Agendamento Realizado!</h3>
+                <p class="text-slate-400 text-sm px-2">Viu como é simples e rápido para o seu cliente agendar sem ocupar o seu WhatsApp?</p>
+                
+                <div class="pt-4 space-y-3">
+                    <a href="aplicativos.html" class="block w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-center transition shadow-lg">
+                        Garantir Meu Aplicativo Agora
+                    </a>
+                    <button onclick="reiniciarDemo()" class="text-xs text-slate-400 hover:text-white underline">
+                        Fazer outro teste
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer da Demo -->
+    <footer class="py-6 text-center text-slate-600 text-xs">
+        Demonstração desenvolvida por <span class="text-slate-400 font-semibold">FM WebDev</span> &copy; 2026
+    </footer>
+
+    <!-- Script de Simulação -->
+    <script>
+        function concluirAgendamento(event) {
+            event.preventDefault();
+            document.getElementById('form-demo').classList.add('hidden');
+            document.getElementById('sucesso-msg').classList.remove('hidden');
+        }
+
+        function reiniciarDemo() {
+            document.getElementById('form-demo').reset();
+            document.getElementById('sucesso-msg').classList.add('hidden');
+            document.getElementById('form-demo').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
