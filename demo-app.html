@@ -41,7 +41,7 @@
         <!-- Passo a Passo do Agendamento (Simulador) -->
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
             
-            <form id="form-demo" onsubmit="concluirAgendamento(event)" class="space-y-5">
+            <form id="form-demo" onsubmit="event.preventDefault();" class="space-y-5">
                 
                 <!-- Escolha do Serviço -->
                 <div>
@@ -90,7 +90,7 @@
                 </div>
 
                 <!-- Botão de Ação -->
-                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-center transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 mt-4">
+                <button type="button" onclick="concluirAgendamentoForcado()" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-center transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 mt-4 cursor-pointer">
                     <i class="fa-solid fa-check-circle"></i> Confirmar Agendamento Teste
                 </button>
             </form>
@@ -107,7 +107,7 @@
                     <a href="aplicativos.html" class="block w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-center transition shadow-lg">
                         Garantir Meu Aplicativo Agora
                     </a>
-                    <button onclick="reiniciarDemo()" class="text-xs text-slate-400 hover:text-white underline">
+                    <button onclick="reiniciarDemo()" class="text-xs text-slate-400 hover:text-white underline cursor-pointer">
                         Fazer outro teste
                     </button>
                 </div>
@@ -121,18 +121,40 @@
         Demonstração desenvolvida por <span class="text-slate-400 font-semibold">FM WebDev</span> &copy; 2026
     </footer>
 
-    <!-- Script de Simulação -->
+    <!-- Script de Simulação Forçada -->
     <script>
-        function concluirAgendamento(event) {
-            event.preventDefault();
-            document.getElementById('form-demo').classList.add('hidden');
-            document.getElementById('sucesso-msg').classList.remove('hidden');
+        function concluirAgendamentoForcado() {
+            // Valida se os campos obrigatórios estão preenchidos antes de avançar
+            const servico = document.getElementById('servico').value;
+            const profissional = document.getElementById('profissional').value;
+            const data = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+            const nome = document.getElementById('nome').value;
+
+            if (!servico || !profissional || !data || !horario || !nome) {
+                alert('Por favor, preencha todos os campos do agendamento para testar.');
+                return;
+            }
+
+            // Esconde o formulário e mostra o sucesso sem recarregar ou abrir links externos
+            const form = document.getElementById('form-demo');
+            const sucesso = document.getElementById('sucesso-msg');
+            
+            if (form && sucesso) {
+                form.style.display = 'none';
+                sucesso.classList.remove('hidden');
+            }
         }
 
         function reiniciarDemo() {
-            document.getElementById('form-demo').reset();
-            document.getElementById('sucesso-msg').classList.add('hidden');
-            document.getElementById('form-demo').classList.remove('hidden');
+            const form = document.getElementById('form-demo');
+            const sucesso = document.getElementById('sucesso-msg');
+            
+            if (form && sucesso) {
+                form.reset();
+                sucesso.classList.add('hidden');
+                form.style.display = 'block';
+            }
         }
     </script>
 </body>
