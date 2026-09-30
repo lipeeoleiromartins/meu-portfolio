@@ -56,7 +56,6 @@
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/10 blur-[140px] rounded-full pointer-events-none -z-10"></div>
 
     <!-- Header / Menu Fixo -->
-   <!-- Header / Menu Fixo -->
     <header class="fixed top-0 left-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logótipo e Nome -->
@@ -408,6 +407,7 @@
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
         if (menuBtn && mobileMenu) {
             menuBtn.addEventListener('click', () => {
@@ -419,8 +419,7 @@
                 }
             });
 
-            const links = mobileMenu.querySelectorAll('a');
-            links.forEach(link => {
+            mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
                     menuIcon.className = 'fa-solid fa-bars';
