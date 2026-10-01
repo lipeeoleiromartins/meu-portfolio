@@ -38,9 +38,10 @@
     }
     </script>
 
-    <!-- Tailwind CSS & FontAwesome -->
+    <!-- Tailwind CSS, FontAwesome & Alpine.js -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
 
@@ -60,6 +61,7 @@
                 <a href="index.html" class="hover:text-blue-400 transition-colors">Início (Sites)</a>
                 <a href="#modelo-exemplo" class="hover:text-blue-400 transition-colors">Modelo Exemplo</a>
                 <a href="#planos-app" class="hover:text-blue-400 transition-colors">Planos & Investimento</a>
+                <a href="#faq" class="hover:text-blue-400 transition-colors">FAQ</a>
             </nav>
 
             <div class="hidden md:flex items-center gap-4">
@@ -81,6 +83,7 @@
             <a href="index.html" class="mobile-link block text-base font-medium text-slate-300 hover:text-blue-400 transition-colors">Início (Sites)</a>
             <a href="#modelo-exemplo" class="mobile-link block text-base font-medium text-slate-300 hover:text-blue-400 transition-colors">Modelo Exemplo</a>
             <a href="#planos-app" class="mobile-link block text-base font-medium text-slate-300 hover:text-blue-400 transition-colors">Planos & Investimento</a>
+            <a href="#faq" class="mobile-link block text-base font-medium text-slate-300 hover:text-blue-400 transition-colors">FAQ</a>
             
             <div class="pt-4 border-t border-slate-800 flex flex-col gap-3">
                 <a href="https://wa.me/5511933013125?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20desenvolvimento%20de%20aplicativos." target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold px-4 py-3 rounded-xl text-center shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2">
@@ -261,6 +264,76 @@
                         Garantir Aplicativo Agora
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção FAQ / Perguntas Frequentes -->
+    <section id="faq" class="py-20 bg-slate-900/50 border-t border-slate-900/85">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Cabeçalho da Seção -->
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Tire suas dúvidas</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-3 mb-4">Perguntas Frequentes</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-base">Tudo o que você precisa saber sobre prazos, funcionamento e suporte dos nossos aplicativos para comércios locais.</p>
+            </div>
+
+            <!-- Acordeão / Perguntas -->
+            <div class="space-y-4" x-data="{ selected: null }">
+                
+                <!-- Item 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden transition-all duration-200 hover:border-blue-500/40 shadow-xl">
+                    <button @click="selected !== 1 ? selected = 1 : selected = null" class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <span class="text-base sm:text-lg font-semibold text-white">Preciso de saber programar para usar o aplicativo?</span>
+                        <svg class="w-5 h-5 text-blue-500 transform transition-transform duration-200 flex-shrink-0 ml-4" :class="{ 'rotate-180': selected === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div x-show="selected === 1" x-transition class="px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Zero! Desenvolvemos o aplicativo com um painel de controlo extremamente simples, intuitivo e pronto a usar na palma da mão para gerir os seus agendamentos e o seu negócio sem complicações.
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden transition-all duration-200 hover:border-blue-500/40 shadow-xl">
+                    <button @click="selected !== 2 ? selected = 2 : selected = null" class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <span class="text-base sm:text-lg font-semibold text-white">O aplicativo funciona em qualquer telemóvel (Android e iPhone)?</span>
+                        <svg class="w-5 h-5 text-blue-500 transform transition-transform duration-200 flex-shrink-0 ml-4" :class="{ 'rotate-180': selected === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div x-show="selected === 2" x-transition class="px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Sim! Criamos aplicações 100% responsivas e otimizadas para rodar perfeitamente em qualquer smartphone, seja em navegadores ou instaladas como app mobile.
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden transition-all duration-200 hover:border-blue-500/40 shadow-xl">
+                    <button @click="selected !== 3 ? selected = 3 : selected = null" class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <span class="text-base sm:text-lg font-semibold text-white">Quanto tempo demora para o aplicativo ficar pronto?</span>
+                        <svg class="w-5 h-5 text-blue-500 transform transition-transform duration-200 flex-shrink-0 ml-4" :class="{ 'rotate-180': selected === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div x-show="selected === 3" x-transition class="px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed">
+                        O prazo varia conforme as funcionalidades e personalizações solicitadas, mas entregamos a base pronta e configurada rapidamente para colocar o seu negócio a faturar.
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden transition-all duration-200 hover:border-blue-500/40 shadow-xl">
+                    <button @click="selected !== 4 ? selected = 4 : selected = null" class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <span class="text-base sm:text-lg font-semibold text-white">Como funciona o suporte após a entrega?</span>
+                        <svg class="w-5 h-5 text-blue-500 transform transition-transform duration-200 flex-shrink-0 ml-4" :class="{ 'rotate-180': selected === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div x-show="selected === 4" x-transition class="px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Oferecemos suporte total. Nos planos de parceria contínua (SaaS), garantimos hospedagem na nuvem, atualizações constantes e atendimento prioritário via WhatsApp sempre que precisar.
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
