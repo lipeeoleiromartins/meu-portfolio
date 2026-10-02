@@ -20,7 +20,7 @@
     <meta property="og:url" content="https://meu-portfolio-red-psi.vercel.app/aplicativos.html">
     <meta property="og:image" content="logo.jpg">
 
-    <!-- Schema.org em JSON-LD -->
+    <!-- Schema.org em JSON-LD (Dados Estruturados Corrigidos) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -31,8 +31,8 @@
       "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "BRL",
-        "lowPrice": "450.00",
-        "highPrice": "200.00"
+        "lowPrice": "200.00",
+        "highPrice": "650.00"
       },
       "description": "Aplicativo mobile focado em agendamentos automatizados e gestão para comércios locais."
     }
@@ -72,7 +72,7 @@
 
             <!-- Botão do Menu Hambúrguer (Apenas Telemóvel) -->
             <div class="flex items-center md:hidden">
-                <button id="menu-btn" aria-label="Abrir Menu" class="text-slate-300 hover:text-white text-2xl p-2 focus:outline-none">
+                <button id="menu-btn" aria-label="Abrir Menu" aria-expanded="false" class="text-slate-300 hover:text-white text-2xl p-2 focus:outline-none">
                     <i class="fa-solid fa-bars" id="menu-icon"></i>
                 </button>
             </div>
@@ -171,12 +171,12 @@
                 </div>
 
                 <!-- Card Demonstrativo -->
-                <div class="bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-blue-600/60 rounded-3xl p-8 shadow-2xl relative">
+                <div class="bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-blue-600/60 rounded-3xl p-8 shadow-2xl relative h-full flex flex-col">
                     <div class="absolute -top-3.5 right-8 bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">
                         Base Customizável
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-3">App Agendamento Pro</h3>
-                    <p class="text-slate-400 text-sm mb-6">Estrutura pronta para adaptar à identidade visual e às regras específicas do seu comércio.</p>
+                    <p class="text-slate-400 text-sm mb-6 flex-grow">Estrutura pronta para adaptar à identidade visual e às regras específicas do seu comércio.</p>
                     
                     <ul class="space-y-3 text-slate-300 text-sm mb-8">
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Logótipo e cores do seu negócio</li>
@@ -184,7 +184,7 @@
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Suporte total e atualizações contínuas</li>
                     </ul>
 
-                    <a href="demo-app.html" target="_blank" rel="noopener noreferrer" class="block w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-center transition shadow-lg shadow-blue-600/30">
+                    <a href="demo-app.html" target="_blank" rel="noopener noreferrer" class="block w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-center transition shadow-lg shadow-blue-600/30 mt-auto">
                         Quero Ver Demonstração
                     </a>
                 </div>
@@ -338,7 +338,7 @@
         </div>
     </section>
 
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-slate-950 border-t border-slate-900 py-12 px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
@@ -351,7 +351,7 @@
         </div>
     </footer>
 
-    <!-- Script para abrir/fechar o menu mobile -->
+    <!-- Script para abrir/fechar o menu mobile (Atualizado) -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -359,19 +359,24 @@
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            } else {
+            const isExpanded = mobileMenu.classList.toggle('hidden');
+            // Atualiza o atributo aria-expanded para acessibilidade
+            menuBtn.setAttribute('aria-expanded', !isExpanded);
+            
+            if (!isExpanded) {
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
             }
         });
 
+        // Fecha o menu quando um link é clicado
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
             });
