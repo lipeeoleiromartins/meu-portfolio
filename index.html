@@ -49,6 +49,42 @@
     <!-- Tailwind CSS & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos de Alta Interatividade e Textura Tech (FM WebDev) -->
+    <style>
+        /* 1. Fundo Tecnológico Imersivo com Leitura Perfeita */
+        body {
+            background-image: 
+                radial-gradient(circle at center, rgba(15, 23, 42, 0.92), #0b0f17),
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920&auto=format&fit=crop') !important;
+            background-repeat: no-repeat !important;
+            background-position: center top !important;
+            background-size: cover !important;
+            background-attachment: fixed !important;
+            color: #F8FAFC;
+        }
+
+        /* 2. Efeito Neon e Elevação nos Cards (Serviços, Vantagens e Planos) */
+        .bg-slate-900, div[class*="rounded-2xl"], div[class*="border"] {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bg-slate-900:hover, div[class*="rounded-2xl"]:hover {
+            border-color: #00E5FF !important;
+            box-shadow: 0 12px 35px -10px rgba(0, 229, 255, 0.25) !important;
+            transform: translateY(-4px);
+        }
+
+        /* 3. Micro-interações nos Botões e CTAs */
+        a[class*="bg-blue"], button, a[class*="bg-emerald"] {
+            transition: all 0.2s ease-in-out !important;
+        }
+
+        a[class*="bg-blue"]:hover, button:hover, a[class*="bg-emerald"]:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.35) !important;
+        }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
 
